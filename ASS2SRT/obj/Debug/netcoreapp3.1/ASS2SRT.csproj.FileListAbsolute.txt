@@ -1,0 +1,46 @@
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.csprojAssemblyReference.cache
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT_MarkupCompile.cache
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT_MarkupCompile.lref
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\bin\Debug\netcoreapp3.1\ASS2SRT.exe
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\bin\Debug\netcoreapp3.1\ASS2SRT.deps.json
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\bin\Debug\netcoreapp3.1\ASS2SRT.runtimeconfig.json
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\bin\Debug\netcoreapp3.1\ASS2SRT.runtimeconfig.dev.json
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\bin\Debug\netcoreapp3.1\ASS2SRT.dll
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\bin\Debug\netcoreapp3.1\ASS2SRT.pdb
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\obj\Debug\netcoreapp3.1\App.baml
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\obj\Debug\netcoreapp3.1\MainWindow.baml
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.g.resources
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.AssemblyInfo.cs
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.csproj.CopyComplete
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.dll
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.pdb
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.genruntimeconfig.cache
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\bin\Debug\netcoreapp3.1\MaterialDesignColors.dll
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\bin\Debug\netcoreapp3.1\MaterialDesignThemes.Wpf.dll
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\bin\Debug\netcoreapp3.1\Microsoft.WindowsAPICodePack.dll
+C:\Users\User\source\repos\ASS to SRT Converter Extended\ASS2SRT\bin\Debug\netcoreapp3.1\Microsoft.WindowsAPICodePack.Shell.dll
+D:\GIT\ass2srt\compiled\netcoreapp3.1\ASS2SRT.exe
+D:\GIT\ass2srt\compiled\netcoreapp3.1\ASS2SRT.deps.json
+D:\GIT\ass2srt\compiled\netcoreapp3.1\ASS2SRT.runtimeconfig.json
+D:\GIT\ass2srt\compiled\netcoreapp3.1\ASS2SRT.runtimeconfig.dev.json
+D:\GIT\ass2srt\compiled\netcoreapp3.1\ASS2SRT.dll
+D:\GIT\ass2srt\compiled\netcoreapp3.1\ASS2SRT.pdb
+D:\GIT\ass2srt\source\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.csprojAssemblyReference.cache
+D:\GIT\ass2srt\source\ASS2SRT\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+D:\GIT\ass2srt\source\ASS2SRT\obj\Debug\netcoreapp3.1\App.g.cs
+D:\GIT\ass2srt\source\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT_MarkupCompile.cache
+D:\GIT\ass2srt\source\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT_MarkupCompile.lref
+D:\GIT\ass2srt\source\ASS2SRT\obj\Debug\netcoreapp3.1\App.baml
+D:\GIT\ass2srt\source\ASS2SRT\obj\Debug\netcoreapp3.1\MainWindow.baml
+D:\GIT\ass2srt\source\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.g.resources
+D:\GIT\ass2srt\source\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.AssemblyInfoInputs.cache
+D:\GIT\ass2srt\source\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.AssemblyInfo.cs
+D:\GIT\ass2srt\source\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.csproj.CoreCompileInputs.cache
+D:\GIT\ass2srt\source\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.csproj.CopyComplete
+D:\GIT\ass2srt\source\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.dll
+D:\GIT\ass2srt\source\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.pdb
+D:\GIT\ass2srt\source\ASS2SRT\obj\Debug\netcoreapp3.1\ASS2SRT.genruntimeconfig.cache

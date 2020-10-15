@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets\ASS2SRT-icon.ico</ApplicationIcon>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>Maxim Harder</Authors>
+    <Company>DevCraft.Club</Company>
+    <Product>ASS to SRT Converter Extended</Product>
+    <Description>Расширенный конвертер субтитров из формата ASS в формат SRT.</Description>
+    <PackageProjectUrl>https//devcraft.club</PackageProjectUrl>
+    <PackageIcon>ASS2SRT icon.png</PackageIcon>
+    <NeutralLanguage>ru</NeutralLanguage>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseFile>licence.txt</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/Gokujo/ass2srt</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>true</Optimize>
+    <OutputPath>D:\GIT\ass2srt\compiled\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="subtitles.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="3.2.0" />
+    <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\User\Desktop\ASS2SRT icon.png" Link="Assets\ASS2SRT icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="C:\Users\User\Desktop\licence.txt" Link="Assets\licence.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>ASS2SRT</id>
+    <version>1.0.0</version>
+    <authors>Maxim Harder</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">licence.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>ASS2SRT icon.png</icon>
+    <description>Расширенный конвертер субтитров из формата ASS в формат SRT.</description>
+    <repository url="https://github.com/Gokujo/ass2srt" />
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="MaterialDesignThemes" version="3.2.0" exclude="Build,Analyzers" />
+        <dependency id="WindowsAPICodePack-Shell" version="1.1.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework=".NETCoreApp3.1">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="D:\GIT\ass2srt\compiled\netcoreapp3.1\ASS2SRT.runtimeconfig.json" target="lib\netcoreapp3.1\ASS2SRT.runtimeconfig.json" />
+    <file src="D:\GIT\ass2srt\compiled\netcoreapp3.1\ASS2SRT.dll" target="lib\netcoreapp3.1\ASS2SRT.dll" />
+    <file src="C:\Users\User\Desktop\ASS2SRT icon.png" target="ASS2SRT icon.png" />
+    <file src="C:\Users\User\Desktop\licence.txt" target="licence.txt" />
+  </files>
+</package>

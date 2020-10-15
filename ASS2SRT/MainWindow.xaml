@@ -1,0 +1,224 @@
+﻿<Window x:Class="ASS2SRT.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ASS2SRT"
+        mc:Ignorable="d"
+        Title="ASS to SRT Converter Extended" Width="500" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight">
+
+    <Grid>
+        <materialDesign:DialogHost x:Name="dia" IsOpen="False">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel x:Name="dieStack" Orientation="Vertical" Margin="5,5,5,5">
+                    <Label x:Name="diaHeader" Content="Заголовок" Margin="0,0,0,0" FontWeight="Bold" FontFamily="Bahnschrift" FontSize="18" />
+                    <TextBlock x:Name="diaText" Margin="10,5,10,5"/>
+                    <Button x:Name="dieClose" Content="Закрыть" Margin="0,10,0,0" Click="dieClose_Click"/>
+
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+            
+            <materialDesign:Card Padding="5" Margin="5">
+            <StackPanel Orientation="Vertical">
+                <TextBlock x:Name="warning" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,10"><Run Text="Данная программа предназначена для продвинутого конвертирования субтитров"/><LineBreak/><Run Text="из формата "/><Run Text="ASS "/><Run Text="в формат "/><Run Text="S"/><Run Language="de-de" Text="R"/><Run Text="T. "/><LineBreak/><Run/><LineBreak/><Run Foreground="Red" Text="Использование программы на свой страх и риск!"/><LineBreak/><Run Foreground="Red" Text="Автор не ручается за ваши неразумные настройки программы!"/></TextBlock>
+                <GroupBox x:Name="selectFiles" Header="Выбор файла">
+                    <StackPanel Orientation="Vertical">
+
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Button x:Name="fileSelector" Content="Выбрать" Margin="20,0,0,0" Click="fileSelector_Click"/>
+                            <TextBlock x:Name="importFile" Text="Путь до файла..." TextWrapping="Wrap" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Label Content="Статус:" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" FontWeight="Bold"/>
+                            <TextBlock x:Name="statusWord" Text="Ждём..." TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox x:Name="infoBox" Header="Информация" Margin="0,10,0,0" Visibility="Collapsed">
+                    <StackPanel Orientation="Vertical">
+                        <DockPanel LastChildFill="False">
+                            <CheckBox Cursor="Hand" x:Name="keepOriginalName" Content="Оставить оригинальное название файла" DockPanel.Dock="Bottom" HorizontalAlignment="Left" VerticalAlignment="Bottom" Unchecked="keepOriginalName_Checked" Checked="keepOriginalName_Checked" IsChecked="True"/>
+                            <Label Content="Название файла" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                            <TextBox x:Name="fileName" Text="..." TextWrapping="Wrap" DockPanel.Dock="Left" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Visible" TextChanged="fileName_TextChanged" IsEnabled="False"/>
+                            <materialDesign:PackIcon Cursor="Hand" Kind="HelpCircle" Margin="5,0,0,0" HorizontalAlignment="Center" DockPanel.Dock="Right" VerticalAlignment="Top">
+                                <materialDesign:PackIcon.ToolTip>
+                                    <TextBlock>
+                                        Для установления пользовательского названия,
+                                        <LineBreak/>
+                                        можно использовать несколько тегов или оставить название как есть.
+                                        <LineBreak/>
+                                        Парсинг информации о серии из названия не предусмотрен!
+                                        <LineBreak/>
+                                        <LineBreak/>
+                                        Поддерживаемые теги:
+                                        <LineBreak/>
+                                        {original} - исходное название файла
+                                        <LineBreak/>
+                                        {num} - нумерация файла
+                                        <LineBreak/>
+                                        <LineBreak/>
+                                        Пример: This.Awesome.Subtitle.{num}
+                                    </TextBlock>
+                                </materialDesign:PackIcon.ToolTip>
+                            </materialDesign:PackIcon>
+                        </DockPanel>
+                        <DockPanel x:Name="startCount" LastChildFill="False" Visibility="Collapsed">
+                            <Label Content="Начать отсчёт нумерации с:" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                            <TextBox x:Name="startNum" Text="1" TextWrapping="Wrap" DockPanel.Dock="Left" Margin="10,0,0,0" HorizontalAlignment="Center" TextChanged="startNum_TextChanged" VerticalAlignment="Center" PreviewTextInput="NumberValidationTextBox"/>
+                            <Label x:Name="nullCountLabel" Content="Кол-во значений:" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="10,0,0,0"/>
+                            <TextBox x:Name="nullCount" Text="1" TextWrapping="Wrap" DockPanel.Dock="Left" Margin="10,0,0,0" HorizontalAlignment="Center" TextChanged="nullCount_TextChanged" VerticalAlignment="Center" PreviewTextInput="NumberValidationTextBox"/>
+                            <materialDesign:PackIcon Cursor="Hand" Kind="HelpCircle" Margin="5,0,0,0" HorizontalAlignment="Center" DockPanel.Dock="Left" VerticalAlignment="Center">
+                                <materialDesign:PackIcon.ToolTip>
+                                    <TextBlock>
+                                        Если в сезоне десятичное значение серий, т.е. 25,
+                                        <LineBreak/>
+                                        то стоит указать цифру 2.
+                                        <LineBreak/>
+                                        Тогда серии с 1 до 9 дополнятся нулём.
+                                        <LineBreak/>
+                                        <LineBreak/>
+                                        Пример: Если указано 3, то к 1 будут добавлены два нуля -> 001
+                                    </TextBlock>
+                                </materialDesign:PackIcon.ToolTip>
+                            </materialDesign:PackIcon>
+                        </DockPanel>
+                        <DockPanel x:Name="sampleNumDock" LastChildFill="False" Visibility="Collapsed">
+                            <Label Content="Пример:" Margin="0,0,10,0" FontWeight="Bold"/>
+                            <TextBlock x:Name="sampleNum" Text="This.AweSome.Subs.1.srt" VerticalAlignment="Center" HorizontalAlignment="Left" />
+
+                        </DockPanel>
+                        <DockPanel x:Name="linesCountGroup" LastChildFill="False">
+                            <Label Content="Кол-во строчек:" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+                            <TextBlock x:Name="linesCount" Text="0" TextWrapping="Wrap" DockPanel.Dock="Left" Margin="12,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </DockPanel>
+                        <DockPanel x:Name="filesCountGroup" LastChildFill="False" Visibility="Collapsed">
+                            <Label Content="Кол-во файлов:" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+                            <TextBlock x:Name="filesCount" Text="0" TextWrapping="Wrap" DockPanel.Dock="Left" Margin="15,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Button x:Name="loadFiles" DockPanel.Dock="Right" Click="listAllFiles" Content="Показать" ToolTip="Показывает перечень загруженных файлов" />
+
+                        </DockPanel>
+                        <DockPanel x:Name="stylesCountGroup" LastChildFill="False">
+                            <Label Content="Кол-во стилей:" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+                            <TextBlock x:Name="stylesCount" Text="0" TextWrapping="Wrap" DockPanel.Dock="Left" Margin="18,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </DockPanel>
+                        <DockPanel x:Name="actorsCountGroup" LastChildFill="False">
+                            <Label Content="Кол-во актёров:" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+                            <TextBlock x:Name="actorsCount" Text="0" TextWrapping="Wrap" DockPanel.Dock="Left" Margin="11,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </DockPanel>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox x:Name="exportBox" Header="Экспорт" Margin="0,10,0,0" Visibility="Collapsed">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <Button x:Name="fileExporter" Content="Выбрать" Click="fileExporter_Click"/>
+                            <TextBlock x:Name="exportFile" Text="Путь до папки сохранения..." TextWrapping="Wrap" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel x:Name="actorsStackBox" Orientation="Horizontal" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Collapsed">
+                            <Label x:Name="actorSelectLabel" Content="Фразы актёра:" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <ComboBox IsTextSearchEnabled="True" x:Name="actorsListBox" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Width="100" ItemsSource="{Binding _actors}"/>
+                            <Label x:Name="actorIgnoreLabel" Content="Не учитывать актёра:" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <ComboBox IsTextSearchEnabled="True" x:Name="actorsIgnoreListBox" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Width="100" ItemsSource="{Binding _actors}"/>
+                        </StackPanel>
+                        <StackPanel x:Name="stylesStackBox" Orientation="Horizontal" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Collapsed">
+                            <Label Content="Стили учитывать:" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <ComboBox IsTextSearchEnabled="True" x:Name="stylesSelectListBox" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Width="100" ItemsSource="{Binding _styles}" DisplayMemberPath="name" Cursor="Hand"/>
+                            <Label Content="Стили не учитывать:" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <ComboBox IsTextSearchEnabled="True" x:Name="stylesIgnoreSelectListBox" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Width="100" DisplayMemberPath="name" Cursor="Hand"/>
+                        </StackPanel>
+                        <StackPanel x:Name="actorsPhraseStack" Orientation="Horizontal" Margin="0,0,0,0" Visibility="Collapsed">
+                            <CheckBox Cursor="Hand" x:Name="actorAddPhrase" Content="Добавить имя актёра перед фразой?" Checked="actorAddPhrase_Checked" Unchecked="actorAddPhrase_Checked"/>
+                            <materialDesign:PackIcon Cursor="Hand" Kind="HelpCircle" Margin="5,0,0,0" HorizontalAlignment="Center" ToolTip="Перед фразой будет добавлено имя актёра в виде тега. Пример: [Zero] Доброе утро! Как дела?" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel x:Name="actorsAddStack" Orientation="Horizontal" Margin="0,0,0,0" Visibility="Collapsed">
+                            <CheckBox Cursor="Hand" x:Name="actorAddTitle" Content="Добавить имя актёра в название файла?" Checked="actorAddTitle_Checked" Unchecked="actorAddTitle_Checked"/>
+                            <materialDesign:PackIcon Kind="HelpCircle" Cursor="Hand" Margin="5,0,0,0" HorizontalAlignment="Center" ToolTip="В конец названия файла будет добавлен тег актёра. Пример: This.Awesome.Subtitle.01 - [Zero]" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel x:Name="actorsIgnoreAddStack" Orientation="Horizontal" Margin="0,0,0,0" Visibility="Collapsed">
+                            <CheckBox Cursor="Hand" x:Name="actorIgnoreAddTitle" Content="Добавить имя игнорируемого актёра в название файла?" Checked="actorIgnoreAddTitle_Checked" Unchecked="actorIgnoreAddTitle_Checked"/>
+                            <materialDesign:PackIcon Kind="HelpCircle" Cursor="Hand" Margin="5,0,0,0" HorizontalAlignment="Center" ToolTip="В конец названия файла будет добавлен тег игнорируемого актёра. Пример: This.Awesome.Subtitle.01 - [!Zero]" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel x:Name="stylesSelectStack" Orientation="Horizontal" Margin="0,0,0,0" Visibility="Collapsed">
+                            <CheckBox x:Name="styleSelectAddTitle" Content="Добавить выбранные стили в название файла?" Checked="styleSelectAddTitle_Checked" Unchecked="styleSelectAddTitle_Checked"/>
+                            <materialDesign:PackIcon Cursor="Hand" Kind="HelpCircle" Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <materialDesign:PackIcon.ToolTip>
+                                    <TextBlock>
+                                        В конец названия файла будут добавлены теги стилей,
+                                        <LineBreak/>
+                                        были выбраны для экспорта.
+                                        <LineBreak/>
+                                        <LineBreak/>
+                                        Пример: This.Awesome.Subtitle.01 - [Default]
+                                    </TextBlock>
+                                </materialDesign:PackIcon.ToolTip>
+                            </materialDesign:PackIcon>
+                        </StackPanel>
+                        <StackPanel x:Name="stylesIgnoreStack" Orientation="Horizontal" Margin="0,0,0,0" Visibility="Collapsed">
+                            <CheckBox Cursor="Hand" x:Name="styleIgnoreAddTitle" Content="Добавить игнорируеме стили в название файла?" Checked="styleIgnoreAddTitle_Checked" Unchecked="styleIgnoreAddTitle_Checked"/>
+                            <materialDesign:PackIcon Cursor="Hand" Kind="HelpCircle" Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <materialDesign:PackIcon.ToolTip>
+                                    <TextBlock>
+                                        В конец названия файла будут добавлены теги стилей,
+                                        <LineBreak/>
+                                        которые были выбраны для игнорирования при экспорте.
+                                        <LineBreak/>
+                                        Они имеют боьший приоритет перед стилями, которые были выбраны для экспорта.
+                                        <LineBreak/>
+                                        <LineBreak/>
+                                        Пример: This.Awesome.Subtitle.01 - [!Default]
+                                    </TextBlock>
+                                </materialDesign:PackIcon.ToolTip>
+                            </materialDesign:PackIcon>
+                        </StackPanel>
+                        <StackPanel x:Name="prioStack" Orientation="Horizontal" Visibility="Collapsed">
+                            <RadioButton x:Name="actor" GroupName="prio" Content="Приоритет актёрам"  IsChecked="True" Checked="PrioButton_Checked"/>
+                            <RadioButton x:Name="style" GroupName="prio" Content="Приоритет стилям" Margin="10,0,0,0" Checked="PrioButton_Checked"/>
+                            <materialDesign:PackIcon Cursor="Hand" Kind="HelpCircle" Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <materialDesign:PackIcon.ToolTip>
+                                    <TextBlock>
+                                        При конвертировании программа должна иметь
+                                        <LineBreak/>
+                                        приоритет для сохранения строк. Допустим, для экспорта
+                                        <LineBreak/>
+                                        был выбран актёр "а". Строчка, содержащая имя актёра "а"
+                                        <LineBreak/>
+                                        имеет стиль "б", который был отмечен как игнорируемый.
+                                        <LineBreak/>
+                                        Если приоритет отдан "актёру", то настройка стиля
+                                        <LineBreak/>
+                                        будет игнорироваться.
+                                    </TextBlock>
+                                </materialDesign:PackIcon.ToolTip>
+                            </materialDesign:PackIcon>
+                        </StackPanel>
+
+                    </StackPanel>
+                </GroupBox>
+                <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Cursor="Hand" x:Name="exportFiles" Content="Экспортировать" Width="150" Click="exportFiles_ClickAsync" IsEnabled="False"/>
+                    <Button Cursor="Hand" x:Name="aboutAuthor" Content="Об авторе" Margin="10,0,0,0" Width="150" Click="aboutAuthor_Click"/>
+                </StackPanel>
+                <ProgressBar x:Name="progress" Height="10" Margin="0,5,0,0" SmallChange="0"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,0">
+                        <Run Language="ru-ru" Text="Автор: (c) Maxim Harder, "/>
+                        <Run Language="ru-ru">https://devcraft.club</Run>
+                        <Run Language="ru-ru" Text=" (2020)"/>
+                    </TextBlock>
+
+                </StackPanel>
+            </materialDesign:Card>
+        </materialDesign:DialogHost>
+    </Grid>
+
+
+
+</Window>
